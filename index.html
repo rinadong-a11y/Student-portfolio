@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rina Dong | System, Network Administration & Cybersecurity Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#080c14',
+                            card: '#0f172a',
+                            border: '#1e293b',
+                            blue: '#00f0ff',
+                            green: '#00ff88',
+                            purple: '#a855f7',
+                            text: '#94a3b8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                        'scanline': 'scanline 8s linear infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 15px rgba(0, 240, 255, 0.2)' },
+                            '100%': { boxShadow: '0 0 30px rgba(0, 240, 255, 0.6)' },
+                        },
+                        scanline: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(1000%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #080c14;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Grid background effect */
+        .bg-cyber-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        .glow-text-blue {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5), 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+        
+        .glow-text-green {
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .glow-border {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+        }
+
+        .glow-border:hover {
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+            border-color: rgba(0, 240, 255, 0.8);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080c14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
+        }
+    </style>
+</head>
+<body class="bg-cyber-bg text-slate-100 antialiased selection:bg-cyber-blue selection:text-black min-h-screen flex flex-col justify-between relative bg-cyber-grid">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-cyber-bg/80 border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand / Logo -->
+                <a href="#hero" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-lg bg-slate-900 border border-cyber-blue/40 flex items-center justify-center text-cyber-blue font-mono font-bold text-lg group-hover:border-cyber-blue transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.4)]">
+                        RD
+                    </div>
+                    <span class="font-mono font-bold text-lg tracking-wider text-slate-100 group-hover:text-cyber-blue transition-colors">
+                        RINA<span class="text-cyber-blue">.DONG</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#about" class="text-slate-300 hover:text-cyber-blue transition-colors flex items-center gap-1.5"><i class="fa-solid fa-user text-xs text-cyber-blue"></i> About</a>
+                    <a href="#skills" class="text-slate-300 hover:text-cyber-blue transition-colors flex items-center gap-1.5"><i class="fa-solid fa-microchip text-xs text-cyber-blue"></i> Skills</a>
+                    <a href="#projects" class="text-slate-300 hover:text-cyber-blue transition-colors flex items-center gap-1.5"><i class="fa-solid fa-diagram-project text-xs text-cyber-blue"></i> Projects</a>
+                    <a href="#terminal" class="text-slate-300 hover:text-cyber-blue transition-colors flex items-center gap-1.5"><i class="fa-solid fa-terminal text-xs text-cyber-green"></i> Terminal</a>
+                    <a href="#contact" class="px-4 py-2 rounded-lg bg-cyber-blue/10 border border-cyber-blue/40 text-cyber-blue hover:bg-cyber-blue hover:text-slate-950 transition-all font-semibold shadow-[0_0_10px_rgba(0,240,255,0.2)]">
+                        Contact Me
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-cyber-blue focus:outline-none p-2" aria-label="Toggle Navigation Menu">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3 font-mono text-sm">
+            <a href="#about" class="block py-2 text-slate-300 hover:text-cyber-blue transition-colors"><i class="fa-solid fa-user text-cyber-blue mr-2"></i> About</a>
+            <a href="#skills" class="block py-2 text-slate-300 hover:text-cyber-blue transition-colors"><i class="fa-solid fa-microchip text-cyber-blue mr-2"></i> Skills</a>
+            <a href="#projects" class="block py-2 text-slate-300 hover:text-cyber-blue transition-colors"><i class="fa-solid fa-diagram-project text-cyber-blue mr-2"></i> Projects</a>
+            <a href="#terminal" class="block py-2 text-slate-300 hover:text-cyber-green transition-colors"><i class="fa-solid fa-terminal text-cyber-green mr-2"></i> Terminal</a>
+            <a href="#contact" class="block mt-2 py-2 text-center rounded-lg bg-cyber-blue text-slate-950 font-semibold">Contact Me</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative py-20 lg:py-28 overflow-hidden flex items-center justify-center min-h-[calc(100vh-4rem)]">
+        <!-- Background Ambient Glows -->
+        <div class="absolute top-1/4 left-10 w-72 h-72 bg-cyber-blue/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-cyber-green/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-cyber-green/40 text-cyber-green font-mono text-xs tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-cyber-green animate-ping"></span>
+                        <i class="fa-solid fa-shield-halved"></i> Active IT Student @ PNC Cambodia
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-blue via-teal-300 to-cyber-green glow-text-blue">Rina Dong</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-300 font-mono">
+                        System, Network Administration & Cybersecurity Specialist
+                    </p>
+
+                    <p class="text-slate-400 text-base max-w-2xl leading-relaxed">
+                        Passionate about constructing robust infrastructure, configuring secure enterprise networks, managing hard Linux/Windows server environments, and defending systems against cyber threats.
+                    </p>
+
+                    <!-- Quick Highlights Badges -->
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1 rounded bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300"><i class="fa-solid fa-network-wired text-cyber-blue mr-1"></i> Cisco CCNA</span>
+                        <span class="px-3 py-1 rounded bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300"><i class="fa-brands fa-linux text-cyber-green mr-1"></i> Linux Hardening</span>
+                        <span class="px-3 py-1 rounded bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300"><i class="fa-solid fa-lock text-cyber-purple mr-1"></i> Network Security</span>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#projects" class="px-6 py-3 rounded-lg bg-cyber-blue text-slate-950 font-bold hover:bg-cyan-300 transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] flex items-center gap-2">
+                            <i class="fa-solid fa-folder-open"></i> Explore Projects
+                        </a>
+                        <a href="#terminal" class="px-6 py-3 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 hover:border-cyber-green hover:text-cyber-green transition-all flex items-center gap-2 font-mono">
+                            <i class="fa-solid fa-terminal text-cyber-green"></i> Launch Terminal
+                        </a>
+                        <a href="#contact" class="px-6 py-3 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 hover:border-cyber-blue hover:text-cyber-blue transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Contact
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Cyber Visual Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-md bg-slate-900/90 rounded-xl border border-cyber-blue/30 p-6 shadow-[0_0_30px_rgba(0,240,255,0.15)] relative overflow-hidden backdrop-blur-sm">
+                        <!-- Top Accent Bar -->
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-800 font-mono text-xs text-slate-400">
+                            <span class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-red-500 inline-block"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-yellow-500 inline-block"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-green-500 inline-block"></span>
+                            </span>
+                            <span class="text-cyber-blue">SYS_MONITOR v2.4</span>
+                        </div>
+
+                        <!-- System Status Mock Panel -->
+                        <div class="mt-4 space-y-4 font-mono text-xs">
+                            <div class="bg-slate-950 p-3 rounded-lg border border-slate-800">
+                                <div class="flex justify-between text-slate-400 mb-1">
+                                    <span>SYSTEM_IDENTITY</span>
+                                    <span class="text-cyber-green">ONLINE</span>
+                                </div>
+                                <div class="text-slate-200 font-bold">RINA DONG (SNAC_MAJOR)</div>
+                                <div class="text-slate-400 text-[11px] mt-1">Passerelles Numériques Cambodia</div>
+                            </div>
+
+                            <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-slate-400"><i class="fa-solid fa-shield text-cyber-blue mr-1"></i> Security Shield</span>
+                                    <span class="text-cyber-blue">ACTIVE</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                                    <div class="bg-cyber-blue h-full w-[92%] rounded-full"></div>
+                                </div>
+
+                                <div class="flex justify-between items-center pt-2">
+                                    <span class="text-slate-400"><i class="fa-solid fa-server text-cyber-green mr-1"></i> Server Uptime</span>
+                                    <span class="text-cyber-green">99.9%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                                    <div class="bg-cyber-green h-full w-[99%] rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="p-3 bg-cyber-blue/5 border border-cyber-blue/20 rounded-lg text-slate-300 text-xs leading-relaxed">
+                                <span class="text-cyber-blue font-bold">&gt;_ Current Focus:</span> Enterprise Routing/Switching, Linux Server Hardening, Intrusion Prevention & Firewall Configuration.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 bg-slate-950/60 border-y border-slate-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-bold text-cyber-blue tracking-widest uppercase mb-2">&lt;ABOUT_ME&gt;</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Dedicated IT Student & Cyber Enthusiast</p>
+                <div class="w-16 h-1 bg-cyber-blue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <!-- Academic Profile Info -->
+                <div class="lg:col-span-6 space-y-6 text-slate-300">
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-cyber-blue"></i>
+                        Studying at Passerelles Numériques Cambodia (PNC)
+                    </h3>
+                    <p class="leading-relaxed">
+                        I am currently specializing in <strong class="text-white">System, Network Administration, and Cybersecurity (SNAC)</strong> at Passerelles Numériques Cambodia. My academic journey focuses on hands-on practical lab experiences, real-world network simulations, and enterprise system management.
+                    </p>
+                    <p class="leading-relaxed">
+                        My goal is to protect digital assets, build efficient and resilient network topologies, and implement robust server solutions that help organizations operate securely in an increasingly connected world.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4 font-mono text-sm">
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+                            <span class="block text-cyber-blue font-bold text-lg">Location</span>
+                            <span class="text-slate-300">Phnom Penh, Cambodia</span>
+                        </div>
+                        <div class="p-3 bg-slate-900 rounded-lg border border-slate-800">
+                            <span class="block text-cyber-green font-bold text-lg">Institution</span>
+                            <span class="text-slate-300">PNC Cambodia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Values / Pillars -->
+                <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Value 1 -->
+                    <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 hover:border-cyber-blue/50 transition-all">
+                        <div class="w-10 h-10 rounded-lg bg-cyber-blue/10 border border-cyber-blue/30 text-cyber-blue flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-shield-virus text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-white mb-1">Network Security</h4>
+                        <p class="text-xs text-slate-400">Enforcing strict firewall rules, VLAN isolation, and proactive threat prevention.</p>
+                    </div>
+
+                    <!-- Value 2 -->
+                    <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 hover:border-cyber-green/50 transition-all">
+                        <div class="w-10 h-10 rounded-lg bg-cyber-green/10 border border-cyber-green/30 text-cyber-green flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-server text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-white mb-1">System Optimization</h4>
+                        <p class="text-xs text-slate-400">Hardening Linux/Windows servers for max reliability and minimal downtime.</p>
+                    </div>
+
+                    <!-- Value 3 -->
+                    <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 hover:border-cyber-purple/50 transition-all">
+                        <div class="w-10 h-10 rounded-lg bg-cyber-purple/10 border border-cyber-purple/30 text-cyber-purple flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-network-wired text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-white mb-1">Reliability</h4>
+                        <p class="text-xs text-slate-400">Designing dependable routing, switching, and automated backup routines.</p>
+                    </div>
+
+                    <!-- Value 4 -->
+                    <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 hover:border-teal-400/50 transition-all">
+                        <div class="w-10 h-10 rounded-lg bg-teal-400/10 border border-teal-400/30 text-teal-400 flex items-center justify-center mb-3">
+                            <i class="fa-solid fa-brain text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-white mb-1">Continuous Learning</h4>
+                        <p class="text-xs text-slate-400">Staying up-to-date with emerging security vulnerabilities and DevOps practices.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Expertise Section -->
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-bold text-cyber-green tracking-widest uppercase mb-2">&lt;TECHNICAL_STACK&gt;</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Skills & Competencies</p>
+                <div class="w-16 h-1 bg-cyber-green mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Category 1: Networking -->
+                <div class="bg-slate-900/80 p-6 rounded-xl border border-slate-800 hover:border-cyber-blue transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-lg bg-cyber-blue/10 text-cyber-blue">
+                                <i class="fa-solid fa-diagram-next text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-white text-lg">Networking</h3>
+                        </div>
+                        <ul class="space-y-3 font-mono text-xs text-slate-300">
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-blue mr-1"></i> CCNA Principles</span>
+                                <span class="text-cyber-blue">90%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-blue mr-1"></i> Subnetting & CIDR</span>
+                                <span class="text-cyber-blue">95%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-blue mr-1"></i> VLANs & Trunking</span>
+                                <span class="text-cyber-blue">88%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-blue mr-1"></i> Routing (OSPF/Static)</span>
+                                <span class="text-cyber-blue">85%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-blue mr-1"></i> TCP/IP & Wireshark</span>
+                                <span class="text-cyber-blue">85%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-400">
+                        Cisco Packet Tracer, Switches & Routers
+                    </div>
+                </div>
+
+                <!-- Category 2: System Administration -->
+                <div class="bg-slate-900/80 p-6 rounded-xl border border-slate-800 hover:border-cyber-green transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-lg bg-cyber-green/10 text-cyber-green">
+                                <i class="fa-brands fa-linux text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-white text-lg">System Admin</h3>
+                        </div>
+                        <ul class="space-y-3 font-mono text-xs text-slate-300">
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-green mr-1"></i> Linux (Ubuntu/Debian)</span>
+                                <span class="text-cyber-green">90%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-green mr-1"></i> Windows Server / AD</span>
+                                <span class="text-cyber-green">82%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-green mr-1"></i> Bash / PowerShell</span>
+                                <span class="text-cyber-green">80%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-green mr-1"></i> VirtualBox / VMware</span>
+                                <span class="text-cyber-green">88%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-green mr-1"></i> SSH & User Mgmt</span>
+                                <span class="text-cyber-green">92%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-400">
+                        Hardened Deployments & CLI Management
+                    </div>
+                </div>
+
+                <!-- Category 3: Cybersecurity -->
+                <div class="bg-slate-900/80 p-6 rounded-xl border border-slate-800 hover:border-cyber-purple transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-lg bg-cyber-purple/10 text-cyber-purple">
+                                <i class="fa-solid fa-shield-cat text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-white text-lg">Cybersecurity</h3>
+                        </div>
+                        <ul class="space-y-3 font-mono text-xs text-slate-300">
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-purple mr-1"></i> Firewall (UFW/iptables)</span>
+                                <span class="text-cyber-purple">88%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-purple mr-1"></i> Nmap Vulnerability Scanning</span>
+                                <span class="text-cyber-purple">85%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-purple mr-1"></i> Intrusion Detection (Snort)</span>
+                                <span class="text-cyber-purple">78%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-purple mr-1"></i> Incident Response Basics</span>
+                                <span class="text-cyber-purple">80%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-cyber-purple mr-1"></i> Ethical Hacking Fundamentals</span>
+                                <span class="text-cyber-purple">75%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-400">
+                        Defense in Depth & Log Monitoring
+                    </div>
+                </div>
+
+                <!-- Category 4: Tools & Languages -->
+                <div class="bg-slate-900/80 p-6 rounded-xl border border-slate-800 hover:border-teal-400 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-2.5 rounded-lg bg-teal-400/10 text-teal-400">
+                                <i class="fa-solid fa-code text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-white text-lg">Tools & Tech</h3>
+                        </div>
+                        <ul class="space-y-3 font-mono text-xs text-slate-300">
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-teal-400 mr-1"></i> Python Scripting</span>
+                                <span class="text-teal-400">80%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-teal-400 mr-1"></i> Git & GitHub</span>
+                                <span class="text-teal-400">85%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-teal-400 mr-1"></i> HTML5 / CSS3</span>
+                                <span class="text-teal-400">85%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-teal-400 mr-1"></i> Docker Basics</span>
+                                <span class="text-teal-400">72%</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span><i class="fa-solid fa-angle-right text-teal-400 mr-1"></i> Cron / Rsync</span>
+                                <span class="text-teal-400">90%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-400">
+                        Automation & Web Technologies
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Showcase Section -->
+    <section id="projects" class="py-20 bg-slate-950/60 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-bold text-cyber-blue tracking-widest uppercase mb-2">&lt;PORTFOLIO_LABS&gt;</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Featured Technical Projects</p>
+                <div class="w-16 h-1 bg-cyber-blue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden hover:border-cyber-blue/60 transition-all flex flex-col justify-between group">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded bg-cyber-blue/10 border border-cyber-blue/30 text-cyber-blue font-mono text-xs">
+                                Cisco Packet Tracer
+                            </span>
+                            <i class="fa-solid fa-network-wired text-slate-600 group-hover:text-cyber-blue transition-colors text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyber-blue transition-colors">
+                            Enterprise Network Architecture Simulation
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Designed and configured a multi-department enterprise topology using Cisco Packet Tracer. Implemented VLAN segmentations, Inter-VLAN routing, OSPF dynamic routing, and Access Control Lists (ACLs) for strict subnet filtering.
+                        </p>
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">VLANs</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">OSPF</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">ACLs</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">DHCP Relay</span>
+                        </div>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between">
+                        <span class="text-xs text-slate-500 font-mono">PNC Academic Lab</span>
+                        <button onclick="openModal('proj1')" class="text-xs font-mono font-semibold text-cyber-blue hover:underline flex items-center gap-1">
+                            View Specs <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden hover:border-cyber-green/60 transition-all flex flex-col justify-between group">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded bg-cyber-green/10 border border-cyber-green/30 text-cyber-green font-mono text-xs">
+                                Linux Hardening
+                            </span>
+                            <i class="fa-brands fa-ubuntu text-slate-600 group-hover:text-cyber-green transition-colors text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyber-green transition-colors">
+                            Hardened Linux Server Deployment
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Deployed a secure Ubuntu Server hosting Nginx web services. Configured SSH key-based authentication, disabled root logins, configured UFW firewall rules, and implemented Fail2ban to mitigate brute-force SSH attacks.
+                        </p>
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Ubuntu Server</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Fail2ban</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">UFW</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">SSH Key Auth</span>
+                        </div>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between">
+                        <span class="text-xs text-slate-500 font-mono">Server Hardening</span>
+                        <button onclick="openModal('proj2')" class="text-xs font-mono font-semibold text-cyber-green hover:underline flex items-center gap-1">
+                            View Specs <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden hover:border-cyber-purple/60 transition-all flex flex-col justify-between group">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded bg-cyber-purple/10 border border-cyber-purple/30 text-cyber-purple font-mono text-xs">
+                                Security Analysis
+                            </span>
+                            <i class="fa-solid fa-bug text-slate-600 group-hover:text-cyber-purple transition-colors text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyber-purple transition-colors">
+                            Network Intrusion Detection & Analysis
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Setup Snort IDS on a Linux virtual gateway to monitor real-time network traffic. Captured PCAP files using Wireshark, performed packet analysis for malicious signatures, and created custom rules to trigger security alerts.
+                        </p>
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Snort IDS</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Wireshark</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Traffic Analysis</span>
+                        </div>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between">
+                        <span class="text-xs text-slate-500 font-mono">Cybersecurity Lab</span>
+                        <button onclick="openModal('proj3')" class="text-xs font-mono font-semibold text-cyber-purple hover:underline flex items-center gap-1">
+                            View Specs <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden hover:border-teal-400/60 transition-all flex flex-col justify-between group">
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded bg-teal-400/10 border border-teal-400/30 text-teal-400 font-mono text-xs">
+                                Automation
+                            </span>
+                            <i class="fa-solid fa-terminal text-slate-600 group-hover:text-teal-400 transition-colors text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-teal-400 transition-colors">
+                            Automated Server Backup & Log Rotation
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Developed modular Bash shell scripts to handle scheduled incremental server backups with rsync. Integrated cron jobs, automatic archiving with tar/gzip, and Discord/Telegram alert webhooks for status updates.
+                        </p>
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Bash</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Cron Jobs</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Rsync</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Webhook Alerts</span>
+                        </div>
+                    </div>
+                    <div class="px-6 py-4 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between">
+                        <span class="text-xs text-slate-500 font-mono">Scripting & DevOps</span>
+                        <button onclick="openModal('proj4')" class="text-xs font-mono font-semibold text-teal-400 hover:underline flex items-center gap-1">
+                            View Specs <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Career Timeline Section -->
+    <section class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-bold text-cyber-blue tracking-widest uppercase mb-2">&lt;ACADEMIC_PATH&gt;</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Education & Milestones</p>
+                <div class="w-16 h-1 bg-cyber-blue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="max-w-3xl mx-auto relative border-l-2 border-slate-800 ml-4 md:ml-auto">
+                
+                <!-- Timeline Item 1 -->
+                <div class="mb-12 ml-6 relative group">
+                    <!-- Point Icon -->
+                    <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-cyber-blue border-4 border-slate-950 group-hover:scale-125 transition-transform"></div>
+                    
+                    <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <span class="text-cyber-blue font-mono text-xs font-semibold px-2 py-1 bg-cyber-blue/10 rounded border border-cyber-blue/20">
+                                Present Candidate
+                            </span>
+                            <span class="text-xs text-slate-400 font-mono"><i class="fa-regular fa-calendar mr-1"></i> Specialization Track</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Passerelles Numériques Cambodia (PNC)</h3>
+                        <p class="text-sm text-cyber-green font-mono mb-3">Major: System, Network Administration & Cybersecurity (SNAC)</p>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Comprehensive practical curriculum designed for enterprise IT roles. Intensive hands-on coursework covering routing & switching protocols, server configuration (Linux & Windows), firewall rules, ethical cybersecurity guidelines, and IT system troubleshooting.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="mb-12 ml-6 relative group">
+                    <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-cyber-green border-4 border-slate-950 group-hover:scale-125 transition-transform"></div>
+                    
+                    <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <span class="text-cyber-green font-mono text-xs font-semibold px-2 py-1 bg-cyber-green/10 rounded border border-cyber-green/20">
+                                Key Training
+                            </span>
+                            <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-award mr-1"></i> Core Cert Prep</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Hands-On Network & Security Labs</h3>
+                        <p class="text-sm text-slate-300 font-mono mb-3">Cisco CCNA & System Admin Curriculum</p>
+                        <ul class="text-slate-400 text-sm space-y-1.5 list-disc list-inside">
+                            <li>Simulated complex network topologies on Cisco Packet Tracer</li>
+                            <li>Built and secured web hosting environments on Linux distributions</li>
+                            <li>Learned network protocol analysis using Wireshark & Nmap</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Security Terminal / Console -->
+    <section id="terminal" class="py-20 bg-slate-950/80 border-t border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <h2 class="text-xs font-mono font-bold text-cyber-green tracking-widest uppercase mb-2">&lt;CLI_INTERACTION&gt;</h2>
+                <p class="text-2xl sm:text-3xl font-extrabold text-white">Interactive Terminal Console</p>
+                <p class="text-xs text-slate-400 font-mono mt-2">Type commands below (e.g., <span class="text-cyber-green font-bold">help</span>, <span class="text-cyber-green font-bold">whoami</span>, <span class="text-cyber-green font-bold">skills</span>, <span class="text-cyber-green font-bold">projects</span>, <span class="text-cyber-green font-bold">clear</span>)</p>
+            </div>
+
+            <!-- Terminal Window -->
+            <div class="bg-slate-950 rounded-xl border border-cyber-green/30 overflow-hidden shadow-[0_0_25px_rgba(0,255,136,0.15)] font-mono text-xs sm:text-sm">
+                <!-- Header -->
+                <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                        <span class="ml-2 text-slate-400 text-xs font-mono">rina@pnc-snac-terminal:~</span>
+                    </div>
+                    <span class="text-cyber-green text-xs font-mono flex items-center gap-1">
+                        <span class="w-2 h-2 rounded-full bg-cyber-green animate-pulse"></span> BASH v5.1
+                    </span>
+                </div>
+
+                <!-- Terminal Body -->
+                <div id="terminal-body" class="p-4 sm:p-6 h-80 overflow-y-auto space-y-3 text-slate-300">
+                    <div>
+                        <p class="text-cyber-green font-bold">Welcome to Rina Dong's Interactive Terminal Console!</p>
+                        <p class="text-slate-400">Type <span class="text-cyber-blue font-bold">help</span> to list all available system commands.</p>
+                    </div>
+                </div>
+
+                <!-- Input Prompt -->
+                <div class="p-4 bg-slate-900/50 border-t border-slate-800 flex items-center gap-2">
+                    <span class="text-cyber-green font-bold">rina@snac:~$</span>
+                    <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" class="flex-1 bg-transparent text-slate-100 focus:outline-none font-mono text-xs sm:text-sm" placeholder="Enter command here...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-bold text-cyber-blue tracking-widest uppercase mb-2">&lt;GET_IN_TOUCH&gt;</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Contact & Connect</p>
+                <div class="w-16 h-1 bg-cyber-blue mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                
+                <!-- Contact Info Sidebar -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 space-y-6">
+                        <h3 class="text-xl font-bold text-white mb-4">Contact Information</h3>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 rounded-lg bg-cyber-blue/10 text-cyber-blue border border-cyber-blue/30 shrink-0">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-mono text-slate-400 uppercase">Location</h4>
+                                <p class="text-slate-200 text-sm font-semibold mt-0.5">Phnom Penh, Cambodia</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 rounded-lg bg-cyber-green/10 text-cyber-green border border-cyber-green/30 shrink-0">
+                                <i class="fa-solid fa-envelope text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-mono text-slate-400 uppercase">Email</h4>
+                                <p class="text-slate-200 text-sm font-semibold mt-0.5">rina.dong@fellow.passerellesnumeriques.org</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 rounded-lg bg-cyber-purple/10 text-cyber-purple border border-cyber-purple/30 shrink-0">
+                                <i class="fa-solid fa-school text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-mono text-slate-400 uppercase">Institution</h4>
+                                <p class="text-slate-200 text-sm font-semibold mt-0.5">Passerelles Numériques Cambodia (PNC)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social / Professional Links -->
+                    <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                        <h4 class="text-xs font-mono text-slate-400 uppercase mb-4">Connect Online</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="#" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 hover:text-cyber-blue hover:border-cyber-blue transition-all" title="GitHub">
+                                <i class="fa-brands fa-github text-xl"></i>
+                            </a>
+                            <a href="#" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 hover:text-cyber-blue hover:border-cyber-blue transition-all" title="LinkedIn">
+                                <i class="fa-brands fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 hover:text-cyber-green hover:border-cyber-green transition-all" title="Telegram">
+                                <i class="fa-brands fa-telegram text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-7 bg-slate-900 p-8 rounded-xl border border-slate-800">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-xs font-mono text-slate-300 uppercase mb-2">Your Name</label>
+                                <input type="text" id="name" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-100 focus:outline-none focus:border-cyber-blue transition-colors font-sans text-sm" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-mono text-slate-300 uppercase mb-2">Email Address</label>
+                                <input type="email" id="email" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-100 focus:outline-none focus:border-cyber-blue transition-colors font-sans text-sm" placeholder="john@example.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-xs font-mono text-slate-300 uppercase mb-2">Subject</label>
+                            <input type="text" id="subject" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-100 focus:outline-none focus:border-cyber-blue transition-colors font-sans text-sm" placeholder="Job Opportunity / Network Inquiry">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-xs font-mono text-slate-300 uppercase mb-2">Message</label>
+                            <textarea id="message" rows="4" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-100 focus:outline-none focus:border-cyber-blue transition-colors font-sans text-sm resize-none" placeholder="Write your message here..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 rounded-lg bg-cyber-blue text-slate-950 font-bold hover:bg-cyan-300 transition-all shadow-[0_0_15px_rgba(0,240,255,0.3)] flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Send Encrypted Message
+                        </button>
+                    </form>
+
+                    <!-- Alert Box -->
+                    <div id="form-alert" class="hidden mt-4 p-4 rounded-lg bg-cyber-green/10 border border-cyber-green/40 text-cyber-green text-sm font-mono flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i> Message transmitted successfully! I will reply shortly.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-slate-500">
+            <p>&copy; 2026 Rina Dong. All rights reserved. SNAC Student @ PNC Cambodia.</p>
+            <p class="flex items-center gap-2">
+                <span>Designed with</span> <i class="fa-solid fa-shield-halved text-cyber-blue"></i> <span>& Cyber Precision</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Project Specs Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-cyber-blue/40 rounded-xl max-w-2xl w-full p-6 space-y-4 shadow-[0_0_40px_rgba(0,240,255,0.2)] relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Dynamically injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close Mobile Menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Contact Form Submission Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('form-alert');
+            const form = document.getElementById('contact-form');
+            
+            alertBox.classList.remove('hidden');
+            form.reset();
+
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 6000);
+        }
+
+        // Project Modal Details Data
+        const projectDetails = {
+            proj1: {
+                title: "Enterprise Network Architecture Simulation",
+                category: "Cisco Packet Tracer Topology",
+                description: "Complete design of a medium enterprise topology featuring core, distribution, and access layer architectures. Included VLAN segmentation for HR, IT, and Guest networks, inter-VLAN routing using Router-on-a-Stick, OSPF dynamic routing, and port security.",
+                tech: ["Cisco Switches 2960", "Cisco Routers 2911", "OSPF", "ACL Security", "DHCP Server Config"]
+            },
+            proj2: {
+                title: "Hardened Linux Server Deployment",
+                category: "Ubuntu Server & Web Security",
+                description: "Configured an Ubuntu Server production environment hosting Nginx web services. Implemented strict firewall rules via UFW, automated SSH rate limiting with Fail2ban, generated SSL/TLS certificates, and disabled root remote login.",
+                tech: ["Ubuntu Server 22.04", "Nginx", "UFW Firewall", "Fail2ban", "SSH Keypair Auth"]
+            },
+            proj3: {
+                title: "Network Intrusion Detection & Analysis",
+                category: "Cybersecurity & Traffic Monitoring",
+                description: "Deployed Snort NIDS to monitor subnet traffic for unauthorized access signatures. Simulated port scanning attacks using Nmap and conducted packet payload inspection using Wireshark to isolate suspicious TCP flags.",
+                tech: ["Snort IDS", "Wireshark PCAP", "Nmap Recon", "Log Analysis", "Ubuntu Linux"]
+            },
+            proj4: {
+                title: "Automated Server Backup & Log Rotation",
+                category: "Shell Scripting & System Automation",
+                description: "Created modular Shell scripts to automatically snapshot server directories, compress logs using tar/gzip, and sync data to a remote backup location using Rsync over SSH. Scheduled tasks using cron daemon.",
+                tech: ["Bash Scripting", "Cron Daemon", "Rsync", "Gzip Archiving", "Telegram Webhooks"]
+            }
+        };
+
+        function openModal(projKey) {
+            const data = projectDetails[projKey];
+            if (!data) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <span class="text-xs font-mono text-cyber-blue uppercase font-bold tracking-wider">${data.category}</span>
+                <h3 class="text-2xl font-bold text-white mt-1 mb-3">${data.title}</h3>
+                <p class="text-slate-300 text-sm leading-relaxed mb-4">${data.description}</p>
+                <div class="mb-4">
+                    <h4 class="text-xs font-mono text-slate-400 uppercase mb-2">Key Technologies & Protocols:</h4>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs">
+                        ${data.tech.map(item => `<span class="px-2.5 py-1 rounded bg-slate-950 border border-slate-800 text-cyber-green">${item}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="pt-4 border-t border-slate-800 flex justify-end">
+                    <button onclick="closeModal()" class="px-4 py-2 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono">Close Specs</button>
+                </div>
+            `;
+            document.getElementById('project-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+
+        // Close modal on escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Interactive Terminal Command Handler
+        const terminalInput = document.getElementById('terminal-input');
+        const terminalBody = document.getElementById('terminal-body');
+
+        const commands = {
+            help: `Available Commands:
+  <span class="text-cyber-blue font-bold">whoami</span>    - Display Rina's bio and role
+  <span class="text-cyber-blue font-bold">skills</span>    - List primary technical skills
+  <span class="text-cyber-blue font-bold">pnc</span>       - Information about PNC Cambodia
+  <span class="text-cyber-blue font-bold">projects</span> - View major academic project highlights
+  <span class="text-cyber-blue font-bold">contact</span>  - Display contact details & location
+  <span class="text-cyber-blue font-bold">clear</span>    - Clear terminal console screen`,
+            
+            whoami: `Rina Dong | IT Student
+Specialization: System, Network Administration & Cybersecurity (SNAC)
+Institution: Passerelles Numériques Cambodia (PNC)
+Location: Phnom Penh, Cambodia`,
+
+            skills: `Technical Stack Overview:
+- Networking: Cisco CCNA Principles, Subnetting, OSPF, VLANs, Wireshark
+- System Admin: Linux (Ubuntu/Debian), Windows Server, Active Directory, Shell Scripting
+- Cybersecurity: UFW/iptables Firewall, Nmap, Snort IDS, Server Hardening
+- Tools: Python, Bash, Git, Docker Basics, HTML/CSS`,
+
+            pnc: `Passerelles Numériques Cambodia (PNC):
+PNC is a non-profit organization offering high-level IT vocational training.
+Major: System, Network Administration & Cybersecurity (SNAC)`,
+
+            projects: `Key Projects:
+1. Enterprise Network Architecture Simulation (Cisco Packet Tracer)
+2. Hardened Linux Server Deployment (Ubuntu + Nginx + Fail2ban)
+3. Network Intrusion Detection (Snort + Wireshark Analysis)
+4. Automated Server Backup Script (Bash + Cron + Rsync)`,
+
+            contact: `Contact Channels:
+- Email: rina.dong@fellow.passerellesnumeriques.org
+- Location: Phnom Penh, Cambodia
+- Institution: Passerelles Numériques Cambodia`
+        };
+
+        terminalInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const inputVal = terminalInput.value.trim().toLowerCase();
+                
+                // Append output
+                const userLine = document.createElement('div');
+                userLine.innerHTML = `<span class="text-cyber-green font-bold">rina@snac:~$</span> <span class="text-white">${inputVal}</span>`;
+                terminalBody.appendChild(userLine);
+
+                if (inputVal === 'clear') {
+                    terminalBody.innerHTML = '';
+                } else if (commands[inputVal]) {
+                    const responseLine = document.createElement('div');
+                    responseLine.className = 'text-slate-300 whitespace-pre-wrap pl-2 border-l-2 border-cyber-blue/40 my-1';
+                    responseLine.innerHTML = commands[inputVal];
+                    terminalBody.appendChild(responseLine);
+                } else if (inputVal !== '') {
+                    const errorLine = document.createElement('div');
+                    errorLine.className = 'text-red-400 pl-2';
+                    errorLine.innerHTML = `Command not recognized: '${inputVal}'. Type <span class="text-cyber-blue font-bold">help</span> for commands.`;
+                    terminalBody.appendChild(errorLine);
+                }
+
+                terminalInput.value = '';
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
